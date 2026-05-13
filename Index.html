@@ -1,1 +1,1442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Instituto Educativo de excelencia - Programas de Secundaria (1, 2, 3), Bachillerato DGTI, UADEC y General. Autorizado por SEP.">
+    <meta name="keywords" content="Instituto educativo, secundaria, bachillerato, DGTI, UADEC, educación, Saltillo, Coahuila">
+    <meta name="author" content="Instituto Educativo">
+    <meta property="og:title" content="Instituto Educativo - Educación de Excelencia">
+    <meta property="og:description" content="Formación académica integral desde secundaria hasta bachillerato. Programas autorizados por la SEP.">
+    <meta property="og:type" content="website">
+    <title>Instituto Educativo - Secundaria y Bachillerato</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --purple-primary: #6f42c1;
+            --purple-dark: #4a2973;
+            --purple-light: #9d6fd4;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+            --border-color: #e0e0e0;
+            --success: #28a745;
+            --error: #dc3545;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #fafafa;
+        }
+
+        /* Estilos generales */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        button, input, textarea, select {
+            font-family: inherit;
+        }
+
+        /* Header y Navegación */
+        header {
+            background: linear-gradient(135deg, var(--purple-primary) 0%, var(--purple-dark) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.15);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-login, .btn-register {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-login:hover {
+            background: white;
+            color: var(--purple-primary);
+        }
+
+        .btn-register {
+            background: white;
+            color: var(--purple-primary);
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--purple-primary) 0%, var(--purple-dark) 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--purple-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--purple-primary);
+        }
+
+        /* Secciones de programas */
+        .programs-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .program-card {
+            background: linear-gradient(135deg, #fafafa 0%, white 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--purple-primary), var(--purple-light));
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(111, 66, 193, 0.15);
+            border-color: var(--purple-primary);
+        }
+
+        .program-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-card h3 {
+            color: var(--purple-primary);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-duration {
+            display: inline-block;
+            background: var(--purple-primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .program-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .program-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .program-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .btn-learn-more {
+            background: var(--purple-primary);
+            color: white;
+            padding: 0.8rem 1.6rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-learn-more:hover {
+            background: var(--purple-dark);
+            transform: translateX(5px);
+        }
+
+        /* SEP Validation */
+        .sep-validation {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5f8 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+            border: 2px dashed var(--purple-primary);
+        }
+
+        .sep-badge {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: var(--purple-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .sep-validation h3 {
+            color: var(--purple-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .sep-info {
+            color: #666;
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Sección de contacto */
+        .contact-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--purple-primary), var(--purple-light));
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: #fafafa;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--purple-primary);
+            box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: var(--purple-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--purple-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(111, 66, 193, 0.3);
+        }
+
+        /* Galería de fotos */
+        .gallery-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5f8 100%);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+            background: white;
+            border: 2px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item.empty {
+            color: #999;
+        }
+
+        .gallery-input {
+            display: none;
+        }
+
+        .btn-add-photo {
+            background: var(--purple-primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-add-photo:hover {
+            background: var(--purple-dark);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            color: var(--purple-primary);
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--text-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--purple-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--purple-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--purple-dark);
+                padding: 1rem;
+                border-radius: 0 0 8px 8px;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .auth-buttons button {
+                width: 100%;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons button {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .btn-primary, .btn-secondary, .btn-submit {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .program-card {
+                padding: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Validación de formularios */
+        .form-error {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        .form-group input.error,
+        .form-group textarea.error {
+            border-color: var(--error);
+        }
+
+        .success-message {
+            background: rgba(40, 167, 69, 0.1);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        /* Transiciones suaves */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        button, a {
+            transition: all 0.3s ease;
+        }
+    </style>
+
+    <script>
+        // Sistema de autenticación simple
+        class AuthSystem {
+            constructor() {
+                this.users = JSON.parse(localStorage.getItem('users')) || [];
+                this.currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+            }
+
+            register(email, password, name) {
+                if (this.users.find(u => u.email === email)) {
+                    return { success: false, message: 'El email ya está registrado' };
+                }
+                if (password.length < 6) {
+                    return { success: false, message: 'La contraseña debe tener al menos 6 caracteres' };
+                }
+                this.users.push({ email, password, name });
+                localStorage.setItem('users', JSON.stringify(this.users));
+                return { success: true, message: 'Registro exitoso' };
+            }
+
+            login(email, password) {
+                const user = this.users.find(u => u.email === email && u.password === password);
+                if (user) {
+                    this.currentUser = { email: user.email, name: user.name };
+                    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+                    return { success: true, message: 'Inicio de sesión exitoso' };
+                }
+                return { success: false, message: 'Email o contraseña incorrectos' };
+            }
+
+            logout() {
+                this.currentUser = null;
+                localStorage.removeItem('currentUser');
+            }
+
+            isLogged() {
+                return this.currentUser !== null;
+            }
+        }
+
+        const authSystem = new AuthSystem();
+
+        // Funciones del DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+
+        function initializeApp() {
+            // Actualizar UI de autenticación
+            updateAuthUI();
+            
+            // Event listeners
+            document.getElementById('menuToggle')?.addEventListener('click', toggleMenu);
+            document.getElementById('loginBtn')?.addEventListener('click', openLoginModal);
+            document.getElementById('registerBtn')?.addEventListener('click', openRegisterModal);
+            document.getElementById('loginSubmit')?.addEventListener('click', handleLogin);
+            document.getElementById('registerSubmit')?.addEventListener('click', handleRegister);
+            document.getElementById('logoutBtn')?.addEventListener('click', handleLogout);
+            
+            // Modales
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) closeModal(this.id);
+                });
+            });
+            
+            document.querySelectorAll('.modal-close').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    closeModal(this.closest('.modal').id);
+                });
+            });
+
+            // Contacto
+            document.getElementById('contactForm')?.addEventListener('submit', handleContactForm);
+
+            // Galería
+            document.querySelectorAll('.btn-add-photo').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('.gallery-input');
+                    input.click();
+                });
+            });
+
+            // Smooth scroll para navegación
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && document.querySelector(href)) {
+                        e.preventDefault();
+                        const element = document.querySelector(href);
+                        element.scrollIntoView({ behavior: 'smooth' });
+                        closeMenu();
+                    }
+                });
+            });
+        }
+
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            nav?.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const nav = document.querySelector('nav');
+            nav?.classList.remove('active');
+        }
+
+        function updateAuthUI() {
+            const authButtons = document.querySelector('.auth-buttons');
+            if (!authButtons) return;
+
+            if (authSystem.isLogged()) {
+                authButtons.innerHTML = `
+                    <span style="color: white; font-weight: 600;">¡Bienvenido, ${authSystem.currentUser.name}!</span>
+                    <button class="btn-login" id="logoutBtn">Cerrar sesión</button>
+                `;
+                document.getElementById('logoutBtn')?.addEventListener('click', handleLogout);
+            } else {
+                authButtons.innerHTML = `
+                    <button class="btn-login" id="loginBtn">Inicia sesión</button>
+                    <button class="btn-register" id="registerBtn">Regístrate</button>
+                `;
+                document.getElementById('loginBtn')?.addEventListener('click', openLoginModal);
+                document.getElementById('registerBtn')?.addEventListener('click', openRegisterModal);
+            }
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal')?.classList.add('active');
+        }
+
+        function openRegisterModal() {
+            document.getElementById('registerModal')?.classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId)?.classList.remove('active');
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+
+            const result = authSystem.login(email, password);
+            if (result.success) {
+                alert(result.message);
+                closeModal('loginModal');
+                updateAuthUI();
+                document.getElementById('loginEmail').value = '';
+                document.getElementById('loginPassword').value = '';
+            } else {
+                alert(result.message);
+            }
+        }
+
+        function handleRegister() {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+            if (!name || !email || !password || !confirmPassword) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+
+            const result = authSystem.register(email, password, name);
+            if (result.success) {
+                alert(result.message);
+                closeModal('registerModal');
+                document.getElementById('registerName').value = '';
+                document.getElementById('registerEmail').value = '';
+                document.getElementById('registerPassword').value = '';
+                document.getElementById('registerConfirmPassword').value = '';
+            } else {
+                alert(result.message);
+            }
+        }
+
+        function handleLogout() {
+            if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+                authSystem.logout();
+                updateAuthUI();
+            }
+        }
+
+        function handleContactForm(e) {
+            e.preventDefault();
+            const form = e.target;
+            const name = form.querySelector('input[name="name"]').value;
+            const email = form.querySelector('input[name="email"]').value;
+            const phone = form.querySelector('input[name="phone"]').value;
+            const subject = form.querySelector('select[name="subject"]').value;
+            const message = form.querySelector('textarea[name="message"]').value;
+
+            if (!name || !email || !phone || !subject || !message) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor ingresa un email válido');
+                return;
+            }
+
+            // Guardar en localStorage
+            const contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+            contacts.push({
+                name, email, phone, subject, message,
+                date: new Date().toLocaleString('es-MX')
+            });
+            localStorage.setItem('contacts', JSON.stringify(contacts));
+
+            alert('¡Mensaje enviado correctamente! Pronto nos pondremos en contacto contigo.');
+            form.reset();
+        }
+
+        // Galería de fotos
+        function setupGallery() {
+            document.querySelectorAll('.gallery-input').forEach((input, index) => {
+                input.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            const gallery = input.closest('.gallery-container');
+                            const firstEmpty = gallery.querySelector('.gallery-item.empty');
+                            if (firstEmpty) {
+                                firstEmpty.innerHTML = `<img src="${event.target.result}" alt="Foto galería">`;
+                                firstEmpty.classList.remove('empty');
+                            }
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            });
+        }
+
+        // Llamar después de que el DOM esté listo
+        setTimeout(setupGallery, 100);
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🎓</div>
+                    Instituto Educativo
+                </div>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <nav>
+                    <a href="#inicio">Inicio</a>
+                    <a href="#programas">Programas</a>
+                    <a href="#contacto">Contacto</a>
+                    <a href="#galeria">Galería</a>
+                    <div class="auth-buttons"></div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Educación de Excelencia</h1>
+                <p>Preparando el futuro de nuestros estudiantes con programas académicos de calidad y valores sólidos</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.getElementById('registerModal').classList.add('active')">
+                        Regístrate Ahora
+                    </button>
+                    <button class="btn-secondary" onclick="document.querySelector('#programas').scrollIntoView({behavior: 'smooth'})">
+                        Conocer Programas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programas Educativos -->
+    <section class="programs-section" id="programas">
+        <div class="container">
+            <h2 class="section-title">Nuestros Programas</h2>
+            <p class="section-subtitle">Elige el programa que mejor se adapte a tus necesidades educativas</p>
+
+            <div class="programs-grid">
+                <!-- DGTI -->
+                <div class="program-card">
+                    <div class="program-icon">🏫</div>
+                    <h3>DGTI</h3>
+                    <span class="program-duration">Programa de 3 años</span>
+                    <p class="program-description">
+                        Programa de Educación Técnica Integral diseñado para formar profesionales competentes en diversas áreas.
+                    </p>
+                    <ul class="program-features">
+                        <li>Educación técnica especializada</li>
+                        <li>Prácticas laborales supervisadas</li>
+                        <li>Certificación profesional</li>
+                        <li>Maestros especializados</li>
+                        <li>Laboratorios equipados</li>
+                    </ul>
+                    <button class="btn-learn-more" onclick="alert('¡Programa DGTI! Duración: 3 años. Formación técnica integral con certificación.')">
+                        Más Información
+                    </button>
+                </div>
+
+                <!-- UADEC -->
+                <div class="program-card">
+                    <div class="program-icon">📚</div>
+                    <h3>UADEC</h3>
+                    <span class="program-duration">Programa de 2 años</span>
+                    <p class="program-description">
+                        Programa acelerado de la Universidad Autónoma de Coahuila enfocado en excelencia académica.
+                    </p>
+                    <ul class="program-features">
+                        <li>Enfoque universitario</li>
+                        <li>Preparación para educación superior</li>
+                        <li>Currículo actualizado</li>
+                        <li>Vinculación con UADEC</li>
+                        <li>Becas disponibles</li>
+                    </ul>
+                    <button class="btn-learn-more" onclick="alert('¡Programa UADEC! Duración: 2 años. Vinculado con la Universidad Autónoma de Coahuila.')">
+                        Más Información
+                    </button>
+                </div>
+
+                <!-- Bachillerato General -->
+                <div class="program-card">
+                    <div class="program-icon">🎯</div>
+                    <h3>Bachillerato General</h3>
+                    <span class="program-duration">Programa de 3 años</span>
+                    <p class="program-description">
+                        Formación académica integral con énfasis en ciencias, humanidades y artes.
+                    </p>
+                    <ul class="program-features">
+                        <li>Formación integral</li>
+                        <li>Múltiples orientaciones</li>
+                        <li>Actividades extracurriculares</li>
+                        <li>Preparación para universidad</li>
+                        <li>Tutoría personalizada</li>
+                    </ul>
+                    <button class="btn-learn-more" onclick="alert('¡Bachillerato General! Duración: 3 años. Formación académica integral.')">
+                        Más Información
+                    </button>
+                </div>
+            </div>
+
+            <!-- SEP Validation -->
+            <div class="sep-validation">
+                <div class="sep-badge">SEP</div>
+                <h3>Autorización Oficial</h3>
+                <p class="sep-info">
+                    Nuestros programas están debidamente autorizados y validados por la Secretaría de Educación Pública (SEP). 
+                    Los estudios realizados en nuestra institución tienen validez oficial en todo el territorio nacional.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <p class="section-subtitle">¿Tienes preguntas? Nos encantaría escucharte</p>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>Calle Principal 123<br>Saltillo, Coahuila, México</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>(844) 123-4567<br>(844) 765-4321</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@institutoeducativo.mx<br>admisiones@institutoeducativo.mx</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div>
+                            <h4>Horario</h4>
+                            <p>Lunes a Viernes: 8:00 AM - 5:00 PM<br>Sábados: 9:00 AM - 12:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="success-message" id="successMessage">
+                        ✓ Mensaje enviado correctamente. Pronto nos pondremos en contacto.
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(844) 123-4567" required>
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Selecciona un asunto</option>
+                            <option value="admisiones">Información de Admisiones</option>
+                            <option value="dgti">Consulta - Programa DGTI</option>
+                            <option value="uadec">Consulta - Programa UADEC</option>
+                            <option value="becas">Becas y Financiamiento</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" placeholder="Cuéntanos tu consulta..." required></textarea>
+                        <span class="form-error"></span>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Fotos -->
+    <section class="gallery-section" id="galeria">
+        <div class="container">
+            <h2 class="section-title">Galería de Fotos</h2>
+            <p class="section-subtitle">Agrega fotos de nuestras instalaciones y actividades académicas</p>
+
+            <div class="gallery-container">
+                <div class="gallery-item empty">
+                    <div>📸</div>
+                    <div>Aula de Clases</div>
+                    <button class="btn-add-photo">Agregar Foto</button>
+                    <input type="file" class="gallery-input" accept="image/*">
+                </div>
+                <div class="gallery-item empty">
+                    <div>📸</div>
+                    <div>Laboratorio</div>
+                    <button class="btn-add-photo">Agregar Foto</button>
+                    <input type="file" class="gallery-input" accept="image/*">
+                </div>
+                <div class="gallery-item empty">
+                    <div>📸</div>
+                    <div>Patio Principal</div>
+                    <button class="btn-add-photo">Agregar Foto</button>
+                    <input type="file" class="gallery-input" accept="image/*">
+                </div>
+                <div class="gallery-item empty">
+                    <div>📸</div>
+                    <div>Biblioteca</div>
+                    <button class="btn-add-photo">Agregar Foto</button>
+                    <input type="file" class="gallery-input" accept="image/*">
+                </div>
+                <div class="gallery-item empty">
+                    <div>📸</div>
+                    <div>Actividades Deportivas</div>
+                    <button class="btn-add-photo">Agregar Foto</button>
+                    <input type="file" class="gallery-input" accept="image/*">
+                </div>
+                <div class="gallery-item empty">
+                    <div>📸</div>
+                    <div>Eventos Especiales</div>
+                    <button class="btn-add-photo">Agregar Foto</button>
+                    <input type="file" class="gallery-input" accept="image/*">
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="color: #666; font-size: 0.95rem;">
+                    💡 Haz clic en "Agregar Foto" para subir imágenes desde tu computadora o dispositivo móvil
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sobre Nosotros</h4>
+                    <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 1rem;">
+                        Instituto Educativo comprometido con la excelencia académica y la formación integral de nuestros estudiantes.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Programas</h4>
+                    <ul>
+                        <li><a href="#programas">DGTI (3 años)</a></li>
+                        <li><a href="#programas">UADEC (2 años)</a></li>
+                        <li><a href="#programas">Bachillerato General</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Conecta con Nosotros</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Instituto Educativo. Todos los derechos reservados. | Autorizado por la SEP</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Inicia Sesión</h2>
+                <button class="modal-close">✕</button>
+            </div>
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Contraseña</label>
+                <input type="password" id="loginPassword" placeholder="Tu contraseña">
+            </div>
+            <button class="btn-submit" id="loginSubmit">Iniciar Sesión</button>
+            <p style="margin-top: 1rem; text-align: center; color: #666;">
+                ¿No tienes cuenta? 
+                <button style="background: none; border: none; color: var(--purple-primary); cursor: pointer; font-weight: 600;" 
+                    onclick="document.getElementById('loginModal').classList.remove('active'); document.getElementById('registerModal').classList.add('active')">
+                    Regístrate aquí
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Regístrate</h2>
+                <button class="modal-close">✕</button>
+            </div>
+            <div class="form-group">
+                <label for="registerName">Nombre Completo</label>
+                <input type="text" id="registerName" placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Contraseña</label>
+                <input type="password" id="registerPassword" placeholder="Mínimo 6 caracteres">
+            </div>
+            <div class="form-group">
+                <label for="registerConfirmPassword">Confirmar Contraseña</label>
+                <input type="password" id="registerConfirmPassword" placeholder="Confirma tu contraseña">
+            </div>
+            <button class="btn-submit" id="registerSubmit">Registrarse</button>
+            <p style="margin-top: 1rem; text-align: center; color: #666;">
+                ¿Ya tienes cuenta? 
+                <button style="background: none; border: none; color: var(--purple-primary); cursor: pointer; font-weight: 600;" 
+                    onclick="document.getElementById('registerModal').classList.remove('active'); document.getElementById('loginModal').classList.add('active')">
+                    Inicia sesión aquí
+                </button>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
